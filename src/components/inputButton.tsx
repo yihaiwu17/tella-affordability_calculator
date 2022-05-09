@@ -16,24 +16,24 @@ function InputButton({withSelect,question}: Props) {
     const onBlur = () => setFocused(false);
 
     console.log(salary1);
-    // useEffect(()=>{
-    //     axios({
-    //         method: 'post',
-    //         url: 'https://react-dev-test-api.vercel.app/api/test',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         data : {
-    //             "total_income": 150000,
-    //             "total_liabilities": 20000,
-    //             "deposit": 100000
-    //         }
-    //     }).then((res) => {
-    //         console.log(res);
-    //     },(error) => {
-    //         console.log(error);
-    //     })
-    // },[salary1, salary2])
+    useEffect(()=>{
+        axios({
+            method: 'post',
+            url: 'https://react-dev-test-api.vercel.app/api/test',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data : {
+                "total_income": 150000,
+                "total_liabilities": 20000,
+                "deposit": 100000
+            }
+        }).then((res) => {
+            console.log(res);
+        },(error) => {
+            console.log(error);
+        })
+    },[salary1, salary2])
     return (
         <div className="wrapper">
             <p className="title">{question}</p>
