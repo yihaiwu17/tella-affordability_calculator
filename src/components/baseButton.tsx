@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import "./buttonStyle.css";
+import "./componentStyle.css";
 
 interface Props {
   title?: string;

@@ -6,8 +6,10 @@ import QuestionBank from "./components/questionBank";
 import Dashboard from "./components/dashboard";
 
 function App() {
+  const [borrow, setBorrow] = useState(0);
   const [salary, setSalary] = useState(0);
-  const [partnerSalary, setPartnerSalary] = useState(0);
+  const [deposit, setDeposit] = useState(0);
+  const [liabilities, setLiabilities] = useState(0);
 
   useEffect(() => {
     axios({
@@ -18,25 +20,30 @@ function App() {
       },
       data: {
         total_income: salary,
-        total_liabilities: 20000,
-        deposit: 100000,
+        total_liabilities: liabilities,
+        deposit: deposit,
       },
     }).then(
       (res) => {
         console.log(res);
+        setBorrow(res.data.borrowing);
       },
       (error) => {
         console.log(error);
       }
     );
-  }, [salary, partnerSalary]);
+  }, [salary]);
 
   return (
     <div className="App">
       <h1 className="Header">Calculator</h1>
       <div className="content">
-        <QuestionBank setSalary={setSalary} />
-        <Dashboard />
+        <QuestionBank
+          setSalary={setSalary}
+          setDeposit={setDeposit}
+          setLiabilities={setLiabilities}
+        />
+        <Dashboard borrow={borrow} salary={salary} />
       </div>
     </div>
   );

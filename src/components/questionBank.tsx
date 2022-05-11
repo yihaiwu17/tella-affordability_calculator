@@ -5,9 +5,11 @@ import InputButton from "./inputButton";
 
 interface Props {
   setSalary: Dispatch<SetStateAction<number>>;
+  setDeposit: Dispatch<SetStateAction<number>>;
+  setLiabilities: Dispatch<SetStateAction<number>>;
 }
 
-function QuestionBank({ setSalary }: Props) {
+function QuestionBank({ setSalary, setDeposit, setLiabilities }: Props) {
   const [partnerSalary, setPartnerSalary] = useState(false);
   const [otherIncome, setOtherIncome] = useState(false);
   const [loan, setLoan] = useState(false);
@@ -47,9 +49,19 @@ function QuestionBank({ setSalary }: Props) {
         setLoan={setLoan}
         setCreditCard={setCreditCard}
       />
-      <InputButton question={salaryQuestion} setSalary={setSalary} />
+      <InputButton
+        question={salaryQuestion}
+        setSalary={setSalary}
+        setDeposit={setDeposit}
+        setLiabilities={setLiabilities}
+      />
       {partnerSalary && (
-        <InputButton question={secondSalary} setSalary={setSalary} />
+        <InputButton
+          question={secondSalary}
+          setSalary={setSalary}
+          setDeposit={setDeposit}
+          setLiabilities={setLiabilities}
+        />
       )}
 
       {/* income question */}
@@ -61,7 +73,12 @@ function QuestionBank({ setSalary }: Props) {
         setCreditCard={setCreditCard}
       />
       {otherIncome && incomeQuestion.includes("income") && (
-        <InputButton question={secondLoan} setSalary={setSalary} />
+        <InputButton
+          question={secondIncome}
+          setSalary={setSalary}
+          setDeposit={setDeposit}
+          setLiabilities={setLiabilities}
+        />
       )}
 
       {/* loan question */}
@@ -74,9 +91,11 @@ function QuestionBank({ setSalary }: Props) {
       />
       {loan && (
         <InputButton
-          question={secondIncome}
+          question={secondLoan}
           withoutSelect={true}
           setSalary={setSalary}
+          setDeposit={setDeposit}
+          setLiabilities={setLiabilities}
         />
       )}
 
@@ -93,10 +112,18 @@ function QuestionBank({ setSalary }: Props) {
           question={creditCards}
           withoutSelect={true}
           setSalary={setSalary}
+          setDeposit={setDeposit}
+          setLiabilities={setLiabilities}
         />
       )}
 
-      <InputButton question={depositQuestion} setSalary={setSalary} />
+      <InputButton
+        question={depositQuestion}
+        setSalary={setSalary}
+        setDeposit={setDeposit}
+        withoutSelect={true}
+        setLiabilities={setLiabilities}
+      />
     </div>
   );
 }

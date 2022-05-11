@@ -39,6 +39,7 @@
 
 .Header {
   display: flex;
+  margin-left: 20px;
 }
 
 .content {

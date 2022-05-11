@@ -1,17 +1,31 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import "./buttonStyle.css";
+import "./componentStyle.css";
 
 interface Props {
   withoutSelect?: boolean;
   question?: string;
   setSalary: Dispatch<SetStateAction<number>>;
+  setDeposit: Dispatch<SetStateAction<number>>;
+  setLiabilities: Dispatch<SetStateAction<number>>;
 }
 
-function InputButton({ withoutSelect, question, setSalary }: Props) {
+function InputButton({
+  withoutSelect,
+  question,
+  setSalary,
+  setDeposit,
+  setLiabilities,
+}: Props) {
   const [focused, setFocused] = useState(false);
 
   const onFocus = () => setFocused(true);
   const onBlur = () => setFocused(false);
+  const handleChange = (event: any) => {
+    if (question?.includes("salary")) setSalary(parseInt(event.target.value));
+    if (question?.includes("deposit")) setDeposit(parseInt(event.target.value));
+    if (question?.includes("loans"))
+      setLiabilities(parseInt(event.target.value));
+  };
 
   return (
     <div className="wrapper">
@@ -22,7 +36,7 @@ function InputButton({ withoutSelect, question, setSalary }: Props) {
           <input
             className="inputValue"
             type="number"
-            onChange={(event: any) => setSalary(event.target.value)}
+            onChange={(e) => handleChange(e)}
             placeholder="0"
           />
         </div>
