@@ -23,7 +23,7 @@ function BaseButton({
   const [leftButton, setLeftButton] = useState(leftButtonMsg ? true : false);
   const [rightButton, setRightButton] = useState(rightButtonMsg ? false : true);
 
-  const leftActive = () => {
+  const leftButtonActive = () => {
     setLeftButton(true);
     setRightButton(false);
     setPartnerSalary(false);
@@ -32,7 +32,7 @@ function BaseButton({
     if (title && title.includes("credit")) setCreditCard(true);
   };
 
-  const rightActive = () => {
+  const rightButtonActive = () => {
     setLeftButton(false);
     setRightButton(true);
     setOtherIncome(false);
@@ -49,13 +49,13 @@ function BaseButton({
       <div className="buttonContainer">
         <button
           className={"button" + (leftButton ? " buttonActive" : "")}
-          onClick={leftActive}
+          onClick={leftButtonActive}
         >
           {leftButtonMsg ?? "Yes"}
         </button>
         <button
           className={"button" + (rightButton ? " buttonActive" : "")}
-          onClick={rightActive}
+          onClick={rightButtonActive}
         >
           {rightButtonMsg ?? "No"}
         </button>

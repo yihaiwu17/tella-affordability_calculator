@@ -32,7 +32,7 @@ function App() {
         console.log(error);
       }
     );
-  }, [salary]);
+  }, [salary, liabilities, deposit]);
 
   return (
     <div className="App">
@@ -43,7 +43,7 @@ function App() {
           setDeposit={setDeposit}
           setLiabilities={setLiabilities}
         />
-        <Dashboard borrow={borrow} salary={salary} />
+        <Dashboard borrow={borrow} salary={salary} deposit={deposit} />
       </div>
     </div>
   );

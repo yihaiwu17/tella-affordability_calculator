@@ -17,13 +17,13 @@ function InputButton({
   setLiabilities,
 }: Props) {
   const [focused, setFocused] = useState(false);
-
   const onFocus = () => setFocused(true);
   const onBlur = () => setFocused(false);
+
   const handleChange = (event: any) => {
     if (question?.includes("salary")) setSalary(parseInt(event.target.value));
     if (question?.includes("deposit")) setDeposit(parseInt(event.target.value));
-    if (question?.includes("loans"))
+    if (question?.includes("Loan"))
       setLiabilities(parseInt(event.target.value));
   };
 
